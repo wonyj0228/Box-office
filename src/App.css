@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@700&family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  background-color: rgb(24, 24, 24);
+
+  min-width: 930px;
+}
+
+/* Header */
+.Header {
+  display: flex;
+  height: 50px;
+  width: 100%;
+
+  position: sticky;
+  top: 10px;
+
+  background-image: url('../src/header_img.jpg');
+  background-size: 100% 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+
+  margin-bottom: 20px;
+}
+
+.Logo {
+  font-family: 'Goldman';
+  font-size: 50px;
+  font-weight: bold;
+  color: rgb(255, 251, 251);
+  text-shadow: 0px 4px 8px rgba(255, 245, 57, 0.74);
+
+  text-align: center;
+  background-color: rgb(24, 24, 24);
+  min-width: 400px;
+  margin-left: 40px;
+}
+
+.Header nav {
+  width: 100%;
+  padding-left: 40px;
+}
+
+.Header nav ul {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+.Header nav ul li {
+  font-family: 'Nanum Gothic';
+  font-weight: bold;
+  color: rgb(255, 251, 251);
+  font-size: 20px;
+
+  text-align: center;
+  min-width: 150px;
+  cursor: pointer;
+  background-color: rgb(24, 24, 24);
+}
+
+/* TitleBox */
+
+.TitleBox {
+  font-family: 'Nanum Gothic';
+  font-weight: bold;
+  color: rgb(255, 251, 251);
+  font-size: 20px;
+
+  height: 70px;
+  display: flex;
+  align-items: center;
+}

@@ -1,9 +1,12 @@
 import './App.css';
+import Header from './components/Header';
+import TitleBox from './components/TitleBox';
 
 function App() {
   return (
     <div className="App">
-      <h2> 하이 하이</h2>
+      <Header />
+      <TitleBox content={'무비차트 TOP 20'} />
     </div>
   );
 }
