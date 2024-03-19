@@ -7,6 +7,10 @@ body {
   min-width: 930px;
 }
 
+main {
+  padding-left: 40px;
+  padding-right: 40px;
+}
 /* Header */
 .Header {
   display: flex;
@@ -65,9 +69,96 @@ body {
   font-family: 'Nanum Gothic';
   font-weight: bold;
   color: rgb(255, 251, 251);
-  font-size: 20px;
+  font-size: 25px;
 
-  height: 70px;
+  height: 80px;
   display: flex;
   align-items: center;
+}
+
+/* Genre */
+.Genre {
+  font-size: 13px;
+  background-color: rgb(233, 232, 232);
+  padding: 5px 15px;
+  border-radius: 20px;
+
+  margin-right: 10px;
+}
+
+/* NowHot */
+
+.NowHot_wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.NowHot {
+  width: 55%;
+  max-width: 780px;
+  height: 40vh;
+  min-height: 380px;
+
+  padding: 10px 20px;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 5px;
+  margin-right: 20px;
+
+  background-image: url('../src/pre_img.jpg');
+  background-size: 100% 100%;
+
+  cursor: pointer;
+}
+
+.NowHot::before {
+  content: '';
+  opacity: 0.5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #000;
+}
+
+.NowHot_info {
+  position: relative;
+  font-size: 100%;
+}
+
+.NowHot_rank {
+  color: white;
+  text-shadow: 0px 4px 8px rgba(255, 245, 57, 0.74);
+  font-family: 'Goldman';
+  font-style: italic;
+  font-size: 5em;
+
+  margin-bottom: 15px;
+}
+
+.NowHot_title {
+  font-style: italic;
+  font-size: 2.5em;
+  color: white;
+  font-weight: bold;
+
+  margin-bottom: 15px;
+}
+
+.NowHot_genre {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.NowHot_summary {
+  width: 50%;
+  color: whitesmoke;
+  font-size: 1em;
+  line-height: 1.3em;
+}
+
+.NowHot_wrapper iframe {
+  flex-grow: 1;
+  border-radius: 5px;
 }
