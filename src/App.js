@@ -1,6 +1,7 @@
 import './App.css';
 import Genre from './components/Genre';
 import Header from './components/Header';
+import MovieList from './components/MovieList';
 import TitleBox from './components/TitleBox';
 
 function App() {
@@ -33,6 +34,62 @@ function App() {
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           ></iframe>
         </div>
+
+        <TitleBox content={'무비차트 TOP 20'} />
+        <div className="top20_wrapper">
+          <div className="top20_movie">
+            <div className="top20_rank">1</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+          <div className="top20_movie">
+            <div className="top20_rank">2</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+          <div className="top20_movie">
+            <div className="top20_rank">3</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+          <div className="top20_movie">
+            <div className="top20_rank">11</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+          <div className="top20_movie">
+            <div className="top20_rank">18</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+          <div className="top20_movie">
+            <div className="top20_rank">19</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+          <div className="top20_movie">
+            <div className="top20_rank">20</div>
+            <img
+              alt="포스터"
+              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+            />
+          </div>
+        </div>
+
+        <TitleBox content={'개봉 예정작'} />
+        <MovieList />
       </main>
     </div>
   );

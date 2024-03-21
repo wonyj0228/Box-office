@@ -14,11 +14,13 @@ main {
 /* Header */
 .Header {
   display: flex;
-  height: 50px;
+  height: 70px;
   width: 100%;
+  align-items: center;
 
   position: sticky;
-  top: 10px;
+  top: 0px;
+  z-index: 1;
 
   background-image: url('../src/header_img.jpg');
   background-size: 100% 100%;
@@ -37,7 +39,7 @@ main {
 
   text-align: center;
   background-color: rgb(24, 24, 24);
-  min-width: 400px;
+  min-width: 500px;
   margin-left: 40px;
 }
 
@@ -58,6 +60,7 @@ main {
   font-size: 20px;
 
   text-align: center;
+  padding: 10px 0px;
   min-width: 150px;
   cursor: pointer;
   background-color: rgb(24, 24, 24);
@@ -160,5 +163,33 @@ main {
 
 .NowHot_wrapper iframe {
   flex-grow: 1;
+  border-radius: 5px;
+}
+
+/* Top20 */
+.top20_wrapper {
+  display: flex;
+}
+
+.top20_movie {
+  display: flex;
+  align-items: flex-end;
+
+  margin-right: 20px;
+}
+
+.top20_rank {
+  font-family: 'Goldman';
+  font-style: italic;
+  color: white;
+  font-size: 5em;
+  padding-right: 20px;
+}
+
+.top20_movie img {
+  width: 200px;
+  height: 270px;
+
+  cursor: pointer;
   border-radius: 5px;
 }
