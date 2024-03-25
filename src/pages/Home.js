@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Genre from '../components/Genre';
 import Header from '../components/Header';
-import MovieList from '../components/MovieList';
 import TitleBox from '../components/TitleBox';
 
 const Home = () => {
@@ -25,8 +24,9 @@ const Home = () => {
     .join('');
 
   const getMovieChart = async () => {
+    const API_KEY = process.env.REACT_APP_KOFIC_API_KEY;
     const rowData = await fetch(
-      `	http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=d95e0891d4c7f97fa098d3e7c0d7b093&targetDt=${yesterdayStr}`
+      `	http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${API_KEY}&targetDt=${yesterdayStr}`
     );
     let data = await rowData.json();
     data = data.boxOfficeResult.dailyBoxOfficeList.map((it) => {
