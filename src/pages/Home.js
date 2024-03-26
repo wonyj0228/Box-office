@@ -1,56 +1,26 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Genre from '../components/Genre';
 import Header from '../components/Header';
 import TitleBox from '../components/TitleBox';
+import { MovieChartContext } from '../App';
 
 const Home = () => {
-  const [movieChart, setMovieChart] = useState([]);
+  const movieChart = useContext(MovieChartContext);
 
-  const today = new Date();
-  const yesterday = new Date(
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate() - 1
-  );
-  const yesterdayStr = yesterday
-    .toLocaleDateString()
-    .split('.')
-    .filter((v) => v !== '')
-    .map((v) =>
-      v.replace(' ', '').length >= 2
-        ? v.replace(' ', '')
-        : v.replace(' ', '').padStart(2, '0')
-    )
-    .join('');
-
-  const getMovieChart = async () => {
-    const API_KEY = process.env.REACT_APP_KOFIC_API_KEY;
-    const rowData = await fetch(
-      `	http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${API_KEY}&targetDt=${yesterdayStr}`
-    );
-    let data = await rowData.json();
-    data = data.boxOfficeResult.dailyBoxOfficeList.map((it) => {
-      const obj = {
-        rank: it.rank,
-        movieNm: it.movieNm,
-        openDt: it.openDt,
-      };
-
-      return obj;
-    });
-    setMovieChart(data);
-    console.log(data);
+  const getMovieDetail = async (movieNm) => {
+    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
+    const data = await (
+      await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieNm}&language=ko-KR`
+      )
+    ).json();
+    return data.results;
   };
-
-  useEffect(() => {
-    getMovieChart();
-  }, []);
 
   return (
     <div>
       <Header />
       <main>
-        <TitleBox content={'인기 상영작'} />
         <div className="NowHot_wrapper">
           <div className="NowHot">
             <div className="NowHot_info">
@@ -69,14 +39,9 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <iframe
-            src="https://www.youtube.com/embed/PnLp7HaN1ao"
-            title="인기 상영작 예고편"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          ></iframe>
         </div>
 
-        <TitleBox content={'무비차트 TOP 10'} />
+        <TitleBox content={'대한민국 TOP 10'} />
         <div className="top10_wrapper">
           <div className="top10_movie">
             <div className="top10_rank">1</div>
