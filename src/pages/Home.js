@@ -1,11 +1,12 @@
 import { useContext, useEffect, useState } from 'react';
-import Genre from '../components/Genre';
 import Header from '../components/Header';
 import TitleBox from '../components/TitleBox';
 import { MovieChartContext } from '../App';
+import NowHot from '../components/NowHot';
 
 const Home = () => {
   const movieChart = useContext(MovieChartContext);
+  const [nowHot, setNowHot] = useState([]);
 
   const getMovieDetail = async (movieNm) => {
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -14,32 +15,48 @@ const Home = () => {
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${movieNm}&language=ko-KR`
       )
     ).json();
-    return data.results;
+    return data;
   };
+
+  useEffect(() => {
+    const top3 = movieChart.slice(0, 3);
+
+    for (let i = 0; i < top3.length; i++) {
+      getMovieDetail(top3[i].movieNm).then((res) => {
+        if (res.results.length >= 1) {
+          const data = res.results[0];
+          setNowHot((prev) => {
+            const oldObj = [...prev];
+            const newObj = { ...prev[i], ...data };
+            oldObj[i] = newObj;
+            return oldObj;
+          });
+        } else {
+          getMovieDetail(top3[i].movieNm[0]).then((res) => {
+            if (res.results.length >= 1) {
+              const data = res.results[0];
+              setNowHot((prev) => {
+                const oldObj = [...prev];
+                const newObj = { ...prev[i], ...data };
+                oldObj[i] = newObj;
+                return oldObj;
+              });
+            }
+          });
+        }
+      });
+    }
+  }, [movieChart]);
 
   return (
     <div>
       <Header />
       <main>
-        <div className="NowHot_wrapper">
-          <div className="NowHot">
-            <div className="NowHot_info">
-              <div className="NowHot_rank">1</div>
-              <div className="NowHot_title">파묘</div>
-              <div className="NowHot_genre">
-                <Genre text={'미스터리'} />
-                <Genre text={'공포'} />
-                <Genre text={'스릴러'} />
-              </div>
-              <div className="NowHot_summary">
-                미국 LA, 거액의 의뢰를 받은 무당 화림과 봉길은 기이한 병이
-                대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈
-                화림은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 상덕과 장의사
-                영근이 합류한다...
-              </div>
-            </div>
-          </div>
-        </div>
+        {nowHot.length > 0
+          ? nowHot.map((movie) => {
+              return <NowHot key={movie.id} {...movie} />;
+            })
+          : null}
 
         <TitleBox content={'대한민국 TOP 10'} />
         <div className="top10_wrapper">
