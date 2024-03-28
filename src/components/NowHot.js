@@ -2,22 +2,42 @@ import { useContext } from 'react';
 import { GenreListContext } from '../App';
 import Genre from './Genre';
 
-const NowHot = ({ rank, title, genre_ids, overview }) => {
+const NowHot = ({
+  rank,
+  title,
+  genre_ids,
+  overview,
+  poster_path,
+  backdrop_path,
+}) => {
   const genreList = useContext(GenreListContext);
 
+  const getGenreText = (genre_id) => {
+    const idx = genreList.findIndex(({ id, _ }) => id === genre_id);
+    return genreList[idx].name;
+  };
+
   return (
-    <div className="NowHot_wrapper">
-      <div className="NowHot">
-        <div className="NowHot_info">
-          <div className="NowHot_rank">{rank}</div>
-          <div className="NowHot_title">{title}</div>
-          <div className="NowHot_genre">
-            <Genre text={'미스터리'} />
-            <Genre text={'공포'} />
-            <Genre text={'스릴러'} />
-          </div>
-          <div className="NowHot_summary">{overview}</div>
+    <div className="NowHot">
+      <img src={`https://image.tmdb.org/t/p/original${poster_path}`} />
+      <div
+        className="NowHot_info"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.527), 
+          rgba(0, 0, 0, 0.5)),
+          url(
+            https://image.tmdb.org/t/p/original${backdrop_path}
+          )`,
+        }}
+      >
+        <div className="NowHot_rank">{rank}</div>
+        <div className="NowHot_title">{title}</div>
+        <div className="NowHot_genre">
+          {genre_ids.map((genre) => (
+            <Genre key={genre} text={getGenreText(genre)} />
+          ))}
         </div>
+        <div className="NowHot_summary">{}</div>
       </div>
     </div>
   );

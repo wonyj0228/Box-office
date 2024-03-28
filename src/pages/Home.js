@@ -26,22 +26,9 @@ const Home = () => {
         if (res.results.length >= 1) {
           const data = res.results[0];
           setNowHot((prev) => {
-            const oldObj = [...prev];
-            const newObj = { ...prev[i], ...data };
-            oldObj[i] = newObj;
-            return oldObj;
-          });
-        } else {
-          getMovieDetail(top3[i].movieNm[0]).then((res) => {
-            if (res.results.length >= 1) {
-              const data = res.results[0];
-              setNowHot((prev) => {
-                const oldObj = [...prev];
-                const newObj = { ...prev[i], ...data };
-                oldObj[i] = newObj;
-                return oldObj;
-              });
-            }
+            const newObj = [...prev, { ...top3[i], ...data }];
+            console.log(newObj);
+            return newObj;
           });
         }
       });
@@ -52,11 +39,13 @@ const Home = () => {
     <div>
       <Header />
       <main>
-        {nowHot.length > 0
-          ? nowHot.map((movie) => {
-              return <NowHot key={movie.id} {...movie} />;
-            })
-          : null}
+        <div className="NowHot_wrapper">
+          {nowHot.length > 0
+            ? nowHot.map((movie) => {
+                return <NowHot key={movie.id} {...movie} />;
+              })
+            : null}
+        </div>
 
         <TitleBox content={'대한민국 TOP 10'} />
         <div className="top10_wrapper">
