@@ -48,16 +48,24 @@ const Home = () => {
     <div>
       <Header />
       <main>
-        <div className="NowHot_wrapper">
-          {nowHot.length > 0
-            ? nowHot.map((movie) => {
-                return <NowHot key={movie.id} {...movie} />;
-              })
-            : null}
+        <div className="NowHot_carousel">
+          <div className="NowHot_wrapper">
+            {nowHot.length > 0
+              ? nowHot.map((movie) => {
+                  return <NowHot key={movie.id} {...movie} />;
+                })
+              : null}
+          </div>
+          <div className="carousel-prev">
+            <i className="fa-solid fa-angles-left"></i>
+          </div>
+          <div className="carousel-next">
+            <i className="fa-solid fa-angles-right"></i>
+          </div>
         </div>
 
         <TitleBox content={'대한민국 TOP 10'} />
-        <div className="top10_wrapper">
+        {/* <div className="top10_wrapper">
           <div className="top10_movie">
             <div className="top10_rank">1</div>
             <img
@@ -107,7 +115,7 @@ const Home = () => {
               src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
             />
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );
