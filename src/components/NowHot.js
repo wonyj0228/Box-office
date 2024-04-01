@@ -31,13 +31,16 @@ const NowHot = ({
         }}
       >
         <div className="NowHot_rank">{rank}</div>
-        <div className="NowHot_title">{title}</div>
-        <div className="NowHot_genre">
-          {genre_ids.map((genre) => (
-            <Genre key={genre} text={getGenreText(genre)} />
-          ))}
+        <div>
+          <div className="NowHot_title">{title}</div>
+          <div className="NowHot_genre">
+            {genre_ids.map((genre) => (
+              <Genre key={genre} text={getGenreText(genre)} />
+            ))}
+          </div>
         </div>
-        <div className="NowHot_summary">{}</div>
+
+        <div className="NowHot_summary">{overview}</div>
       </div>
     </div>
   );

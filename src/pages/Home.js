@@ -27,6 +27,15 @@ const Home = () => {
           const data = res.results[0];
           setNowHot((prev) => {
             const newObj = [...prev, { ...top3[i], ...data }];
+            if (newObj.length === 3) {
+              newObj.sort((a, b) => {
+                if (a.rank < b.rank) {
+                  return a;
+                } else {
+                  return b;
+                }
+              });
+            }
             console.log(newObj);
             return newObj;
           });
