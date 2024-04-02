@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Header from '../components/Header';
 import TitleBox from '../components/TitleBox';
 import { MovieChartContext } from '../App';
@@ -7,6 +7,8 @@ import NowHot from '../components/NowHot';
 const Home = () => {
   const movieChart = useContext(MovieChartContext);
   const [nowHot, setNowHot] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const carousel = useRef();
 
   const getMovieDetail = async (movieNm) => {
     const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
@@ -19,48 +21,73 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const top3 = movieChart.slice(0, 3);
+    if (movieChart.length === 10) {
+      const top3 = movieChart.slice(0, 3);
 
-    for (let i = 0; i < top3.length; i++) {
-      getMovieDetail(top3[i].movieNm).then((res) => {
-        if (res.results.length >= 1) {
+      const newArr = [];
+      for (let i = 0; i < 3; i++) {
+        getMovieDetail(top3[i].movieNm).then((res) => {
           const data = res.results[0];
-          setNowHot((prev) => {
-            const newObj = [...prev, { ...top3[i], ...data }];
-            if (newObj.length === 3) {
-              newObj.sort((a, b) => {
-                if (a.rank < b.rank) {
-                  return a;
-                } else {
-                  return b;
-                }
-              });
-            }
-            console.log(newObj);
-            return newObj;
-          });
-        }
-      });
+          newArr.push({ ...top3[i], ...data });
+
+          if (newArr.length === 3) {
+            setNowHot(newArr);
+          }
+        });
+      }
     }
   }, [movieChart]);
+
+  const nextSlide = () => {
+    if (currentSlide === 2) {
+      setCurrentSlide(0);
+    } else {
+      setCurrentSlide((prev) => prev + 1);
+    }
+  };
+
+  const prevSlide = () => {
+    if (currentSlide === 0) {
+      setCurrentSlide(2);
+    } else {
+      setCurrentSlide((prev) => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    carousel.current.style.transition = 'all 0.5s ease-in-out';
+    const widthPer = 33 * currentSlide;
+    carousel.current.style.transform = `translateX(-${widthPer}%)`;
+  }, [currentSlide]);
 
   return (
     <div>
       <Header />
       <main>
         <div className="NowHot_carousel">
-          <div className="NowHot_wrapper">
+          <div className="NowHot_wrapper" ref={carousel}>
             {nowHot.length > 0
               ? nowHot.map((movie) => {
                   return <NowHot key={movie.id} {...movie} />;
                 })
               : null}
           </div>
-          <div className="carousel-prev">
+          <div className="carousel-prev" onClick={prevSlide}>
             <i className="fa-solid fa-angles-left"></i>
           </div>
-          <div className="carousel-next">
+          <div className="carousel-next" onClick={nextSlide}>
             <i className="fa-solid fa-angles-right"></i>
+          </div>
+          <div className="carousel-circle">
+            <div
+              className={currentSlide === 0 ? 'circle circle-cur' : 'circle'}
+            ></div>
+            <div
+              className={currentSlide === 1 ? 'circle circle-cur' : 'circle'}
+            ></div>
+            <div
+              className={currentSlide === 2 ? 'circle circle-cur' : 'circle'}
+            ></div>
           </div>
         </div>
 
