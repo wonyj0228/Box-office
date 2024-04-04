@@ -93,7 +93,7 @@ main {
 
 .NowHot_carousel {
   width: 100%;
-  height: 60vh;
+  height: 52vh;
   position: relative;
 
   overflow: hidden;
@@ -102,7 +102,7 @@ main {
 
 .NowHot_wrapper {
   display: flex;
-  height: 60vh;
+  height: 52vh;
   width: calc(300% + 60px);
 }
 
@@ -244,10 +244,24 @@ main {
   padding-right: 20px;
 }
 
-.top10_movie img {
+.top10_movie img,
+.top10_noPoster {
   width: 200px;
   height: 270px;
 
   cursor: pointer;
   border-radius: 5px;
+}
+
+.top10_noPoster {
+  background-image: url(/src/no-img.png);
+  background-size: 200px 270px;
+  font-family: 'Nanum Gothic';
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
