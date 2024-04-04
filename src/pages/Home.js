@@ -31,6 +31,15 @@ const Home = () => {
           newArr.push({ ...top3[i], ...data });
 
           if (newArr.length === 3) {
+            newArr.sort((a, b) => {
+              if (a.rank < b.rank) {
+                return -1;
+              } else if (a.rank > b.rank) {
+                return 1;
+              } else {
+                return 0;
+              }
+            });
             setNowHot(newArr);
           }
         });
@@ -92,7 +101,7 @@ const Home = () => {
         </div>
 
         <TitleBox content={'대한민국 TOP 10'} />
-        {/* <div className="top10_wrapper">
+        <div className="top10_wrapper">
           <div className="top10_movie">
             <div className="top10_rank">1</div>
             <img
@@ -100,49 +109,7 @@ const Home = () => {
               src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
             />
           </div>
-          <div className="top10_movie">
-            <div className="top10_rank">2</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
-          <div className="top10_movie">
-            <div className="top10_rank">3</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
-          <div className="top10_movie">
-            <div className="top10_rank">11</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
-          <div className="top10_movie">
-            <div className="top10_rank">18</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
-          <div className="top10_movie">
-            <div className="top10_rank">19</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
-          <div className="top10_movie">
-            <div className="top10_rank">20</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
-        </div> */}
+        </div>
       </main>
     </div>
   );
