@@ -6,12 +6,14 @@ import TitleBox from '../components/TitleBox';
 import NowHot from '../components/NowHot';
 
 import { MovieChartContext } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const movieChart = useContext(MovieChartContext);
   const [nowHot, setNowHot] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const carousel = useRef();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (movieChart.length === 10) {
@@ -62,7 +64,13 @@ const Home = () => {
           <div className="NowHot_wrapper" ref={carousel}>
             {nowHot.length > 0
               ? nowHot.map((movie) => {
-                  return <NowHot key={movie.id} {...movie} />;
+                  return (
+                    <NowHot
+                      key={movie.id}
+                      onClick={() => navigate(`/detail/${movie.id}`)}
+                      {...movie}
+                    />
+                  );
                 })
               : null}
           </div>
@@ -90,7 +98,10 @@ const Home = () => {
           <Slider {...settings}>
             {movieChart.map((movie) => {
               return (
-                <div key={`top10_${movie.id}`}>
+                <div
+                  key={`top10_${movie.id}`}
+                  onClick={() => navigate(`/detail/${movie.id}`)}
+                >
                   <div className="top10_movie">
                     <div className="top10_rank">{movie.rank}</div>
                     {movie.poster_path ? (

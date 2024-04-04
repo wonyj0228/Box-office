@@ -9,6 +9,7 @@ const NowHot = ({
   overview,
   poster_path,
   backdrop_path,
+  onClick,
 }) => {
   const genreList = useContext(GenreListContext);
 
@@ -23,6 +24,7 @@ const NowHot = ({
         <img src={`https://image.tmdb.org/t/p/original${poster_path}`} />
         <div
           className="NowHot_info"
+          onClick={onClick}
           style={{
             backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.527), 
           rgba(0, 0, 0, 0.5)),
