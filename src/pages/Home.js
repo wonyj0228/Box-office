@@ -1,8 +1,13 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import Slider from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
+
 import Header from '../components/Header';
 import TitleBox from '../components/TitleBox';
-import { MovieChartContext } from '../App';
 import NowHot from '../components/NowHot';
+
+import { MovieChartContext } from '../App';
 
 const Home = () => {
   const movieChart = useContext(MovieChartContext);
@@ -69,6 +74,14 @@ const Home = () => {
     carousel.current.style.transform = `translateX(-${widthPer}%)`;
   }, [currentSlide]);
 
+  const settings = {
+    className: 'slider variable-width',
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 2,
+    variableWidth: true,
+  };
+
   return (
     <div>
       <Header />
@@ -101,14 +114,22 @@ const Home = () => {
         </div>
 
         <TitleBox content={'대한민국 TOP 10'} />
-        <div className="top10_wrapper">
-          <div className="top10_movie">
-            <div className="top10_rank">1</div>
-            <img
-              alt="포스터"
-              src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
-            />
-          </div>
+        <div className="slider-container">
+          <Slider {...settings}>
+            {movieChart.map((movie) => {
+              return (
+                <div>
+                  <div className="top10_movie">
+                    <div className="top10_rank">{movie.rank}</div>
+                    <img
+                      alt="poster"
+                      src="https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20240207_151%2F1707288437263gBsdd_JPEG%2Fmovie_image.jpg"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </Slider>
         </div>
       </main>
     </div>

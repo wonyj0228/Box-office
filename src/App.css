@@ -227,10 +227,7 @@ main {
   word-break: break-all;
 }
 
-/* Top20 */
-.top10_wrapper {
-  display: flex;
-}
+/* Top10 */
 
 .top10_movie {
   display: flex;
