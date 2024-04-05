@@ -266,3 +266,73 @@ main {
   align-items: center;
   justify-content: center;
 }
+
+/* ---------------Detail Page-------------------*/
+
+.detail_wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail_top_wrapper {
+  display: flex;
+  justify-content: flex-start;
+  width: 900px;
+  margin-bottom: 30px;
+}
+
+.detail_poster {
+  width: 300px;
+  height: 450px;
+  margin-right: 20px;
+}
+
+.detail_right-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.detail_info-title {
+  font-family: 'Nanum Gothic';
+  font-weight: bold;
+  font-size: 2rem;
+  color: #ffc200;
+
+  margin-bottom: 10px;
+}
+
+.detail_info-plus {
+  display: flex;
+  color: white;
+
+  margin-bottom: 30px;
+}
+
+.detail_info-plus_date {
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: white 1px solid;
+}
+
+.detail_info-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.detail_img-carousel {
+  width: 550px;
+}
+
+.detail_summary {
+  color: white;
+  font-size: 0.9rem;
+  width: 900px;
+
+  word-spacing: 0.2px;
+  line-height: 30px;
+}
