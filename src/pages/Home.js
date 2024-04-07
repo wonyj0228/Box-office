@@ -50,10 +50,7 @@ const Home = () => {
     slidesToShow: 2,
     slidesToScroll: 2,
     variableWidth: true,
-    autoplay: true,
     speed: 1500,
-    autoplaySpeed: 4000,
-    cssEase: 'ease-in-out',
   };
 
   return (
