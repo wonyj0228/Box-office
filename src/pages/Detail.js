@@ -1,17 +1,20 @@
 import { useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Genre from '../components/Genre';
+import TitleBox from '../components/TitleBox';
 import { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import Cast from '../components/Cast';
 
 const Detail = () => {
   const { id } = useParams();
 
   const [movieDetail, setMovieDetail] = useState({});
   const [images, setImages] = useState([]);
+  const [credits, setCredits] = useState([]);
+  const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
   const getDetails = async (id) => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=ko-KR`
     );
@@ -20,9 +23,16 @@ const Detail = () => {
   };
 
   const getImages = async () => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
     const data = await fetch(
       `https://api.themoviedb.org/3/movie/${id}/images?api_key=${API_KEY}`
+    );
+    const json = await data.json();
+    return json;
+  };
+
+  const getCredits = async () => {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=ko-KR`
     );
     const json = await data.json();
     return json;
@@ -46,6 +56,10 @@ const Detail = () => {
 
     getImages().then((res) => {
       setImages(res.backdrops);
+    });
+
+    getCredits().then((res) => {
+      setCredits(res.cast.slice(0, 15));
     });
   }, [id]);
 
@@ -97,8 +111,20 @@ const Detail = () => {
               </div>
             </div>
             <div className="detail_summary">{movieDetail.overview}</div>
+            <div className="detail_casts">
+              <TitleBox content={'캐스팅'} />
+              <div className="casts_list">
+                {credits.map((cast) => {
+                  return (
+                    <div className="cast_item">
+                      <Cast castImg={cast.profile_path} castName={cast.name} />
+                      <div className="cast_character">{cast.character}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
-          <div className="detail_casts"></div>
         </>
       ) : (
         <></>
