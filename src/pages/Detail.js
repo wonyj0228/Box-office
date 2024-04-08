@@ -116,7 +116,7 @@ const Detail = () => {
               <div className="casts_list">
                 {credits.map((cast) => {
                   return (
-                    <div className="cast_item">
+                    <div key={cast.id} className="cast_item">
                       <Cast castImg={cast.profile_path} castName={cast.name} />
                       <div className="cast_character">{cast.character}</div>
                     </div>
