@@ -115,12 +115,7 @@ const Detail = () => {
               <TitleBox content={'캐스팅'} />
               <div className="casts_list">
                 {credits.map((cast) => {
-                  return (
-                    <div key={cast.id} className="cast_item">
-                      <Cast castImg={cast.profile_path} castName={cast.name} />
-                      <div className="cast_character">{cast.character}</div>
-                    </div>
-                  );
+                  return <Cast key={cast.id} charShow={true} {...cast} />;
                 })}
               </div>
             </div>
