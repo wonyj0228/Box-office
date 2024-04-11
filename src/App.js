@@ -21,7 +21,6 @@ export const GenreListContext = React.createContext();
 
 function App() {
   const [movieChart, setMovieChart] = useState([]);
-  const [genreList, setGenreList] = useState([]);
 
   const today = new Date();
   const yesterday = new Date(
@@ -66,21 +65,15 @@ function App() {
     return data;
   };
 
-  const getGenreList = async () => {
-    const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-    const data = await (
-      await fetch(
-        `https://api.themoviedb.org/3/genre/movie/list?language=ko&api_key=${API_KEY}`
-      )
-    ).json();
-    setGenreList(data.genres);
-  };
-
   useEffect(() => {
     getMovieChart().then((res) => {
       const newArr = [];
       for (let i = 0; i < res.length; i++) {
-        getMovieDetail(res[i].movieNm).then((res2) => {
+        let name = res[i].movieNm;
+        if (!isNaN(name[name.length - 1])) {
+          name = name.slice(0, name.length - 1);
+        }
+        getMovieDetail(name).then((res2) => {
           const data = res2.results[0];
           newArr.push({ ...res[i], ...data });
 
@@ -99,16 +92,13 @@ function App() {
         });
       }
     });
-    getGenreList();
   }, []);
 
   return (
     <MovieChartContext.Provider value={movieChart}>
-      <GenreListContext.Provider value={genreList}>
-        <RouterProvider router={router}>
-          <div className="App"></div>
-        </RouterProvider>
-      </GenreListContext.Provider>
+      <RouterProvider router={router}>
+        <div className="App"></div>
+      </RouterProvider>
     </MovieChartContext.Provider>
   );
 }

@@ -52,7 +52,6 @@ const Home = () => {
     variableWidth: true,
     speed: 1500,
   };
-
   return (
     <div>
       <Header />
