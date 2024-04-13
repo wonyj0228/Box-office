@@ -396,6 +396,7 @@ main {
 
 .cast_heart-liked {
   color: rgb(250, 88, 88);
+  opacity: 1;
 }
 
 .cast_heart:hover {
@@ -413,4 +414,30 @@ main {
 .cast_name {
   font-weight: bold;
   margin-bottom: 10px;
+}
+
+.cast_darkClick,
+.cast_whiteClick {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  position: absolute;
+  top: 0;
+
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+
+  font-size: 45px;
+  opacity: 1;
+}
+
+.cast_darkClick {
+  background-color: rgba(5, 5, 5, 0.7);
+}
+
+.cast_whiteClick {
+  cursor: auto;
 }

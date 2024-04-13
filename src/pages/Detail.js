@@ -12,6 +12,8 @@ const Detail = () => {
   const [movieDetail, setMovieDetail] = useState({});
   const [images, setImages] = useState([]);
   const [credits, setCredits] = useState([]);
+  const [likeList, setLikeList] = useState([]);
+
   const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
   const getDetails = async (id) => {
@@ -38,6 +40,13 @@ const Detail = () => {
     return json;
   };
 
+  const getLikeList = () => {
+    const data = JSON.parse(localStorage.getItem('like_actors'));
+    if (data) {
+      setLikeList(data);
+    }
+  };
+
   const settings = {
     dots: false,
     infinite: true,
@@ -61,7 +70,14 @@ const Detail = () => {
     getCredits().then((res) => {
       setCredits(res.cast.slice(0, 15));
     });
+
+    getLikeList();
   }, [id]);
+
+  useEffect(() => {
+    const list = JSON.stringify(likeList);
+    localStorage.setItem('like_actors', list);
+  }, [likeList]);
 
   return (
     <div className="Detail">
@@ -115,7 +131,16 @@ const Detail = () => {
               <TitleBox content={'캐스팅'} />
               <div className="casts_list">
                 {credits.map((cast) => {
-                  return <Cast key={cast.id} charShow={true} {...cast} />;
+                  return (
+                    <Cast
+                      key={cast.id}
+                      charShow={true}
+                      checked={likeList.includes(cast.id)}
+                      setLikeList={setLikeList}
+                      heartView={true}
+                      {...cast}
+                    />
+                  );
                 })}
               </div>
             </div>

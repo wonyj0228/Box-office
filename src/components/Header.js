@@ -10,8 +10,8 @@ const Header = () => {
       </div>
       <nav>
         <ul>
-          <li>TOP 10</li>
-          <li>찜한 리스트</li>
+          <li onClick={() => navigate('/')}>TOP 10</li>
+          <li onClick={() => navigate('/like')}>찜한 리스트</li>
         </ul>
       </nav>
     </div>

@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Home';
 import React, { useEffect, useState } from 'react';
 import Detail from './pages/Detail';
+import Like from './pages/Like';
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
   {
     path: '/detail/:id',
     element: <Detail />,
+  },
+  {
+    path: '/like',
+    element: <Like />,
   },
 ]);
 
