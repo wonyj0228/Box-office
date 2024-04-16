@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../components/Header';
 import Genre from '../components/Genre';
 import TitleBox from '../components/TitleBox';
@@ -8,6 +8,7 @@ import Cast from '../components/Cast';
 
 const Detail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [movieDetail, setMovieDetail] = useState({});
   const [images, setImages] = useState([]);
@@ -86,6 +87,9 @@ const Detail = () => {
           <Header />
           <div className="detail_wrapper">
             <div className="detail_top_wrapper">
+              <div className="page-prev" onClick={() => navigate(-1)}>
+                <i className="fa-solid fa-angles-left"></i>
+              </div>
               <img
                 className="detail_poster"
                 alt="poster"

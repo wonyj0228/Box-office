@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Cast = ({
   profile_path,
   name,
@@ -65,4 +67,4 @@ const Cast = ({
   );
 };
 
-export default Cast;
+export default React.memo(Cast);

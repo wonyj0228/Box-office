@@ -53,7 +53,7 @@ const Home = () => {
     speed: 1500,
   };
   return (
-    <div>
+    <div className="Home">
       <Header />
       <main>
         <div className="NowHot_carousel">

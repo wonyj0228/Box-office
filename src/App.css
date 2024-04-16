@@ -44,6 +44,7 @@ main {
   margin-left: 40px;
 }
 
+/* Header */
 .Header nav {
   width: 100%;
   padding-left: 40px;
@@ -112,7 +113,8 @@ main {
 }
 
 .carousel-prev,
-.carousel-next {
+.carousel-next,
+.page-prev {
   font-size: 30px;
   color: rgba(252, 252, 252, 0.9);
   cursor: pointer;
@@ -276,6 +278,7 @@ main {
 }
 
 .detail_top_wrapper {
+  position: relative;
   display: flex;
   justify-content: flex-start;
   width: 900px;
@@ -341,6 +344,12 @@ main {
   width: 900px;
   margin-top: 30px;
   margin-bottom: 20px;
+}
+
+.page-prev {
+  position: absolute;
+  top: 0;
+  left: -100px;
 }
 
 .casts_list {
@@ -440,4 +449,28 @@ main {
 
 .cast_whiteClick {
   cursor: auto;
+}
+
+/* Like */
+
+.like_actors-wrapper {
+  height: 250px;
+  align-content: center;
+}
+
+.like_movie-item img {
+  width: 15rem;
+  height: 25rem;
+}
+
+.noLike {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.slick-slide div {
+  margin: 0 auto;
 }
