@@ -1,70 +1,35 @@
-# Getting Started with Create React App
+# BOX OFFICE
+-------------
+대한민국 실시간 TOP 10 영화 순위를 보여주는 웹페이지 입니다. <br>
+TOP 10 영화의 세부정보 및 평점, 줄거리, 등장인물에 대한 정보를 볼 수 있습니다. <br>
+좋아하는 배우를 찜하고, 찜한 배우의 필모그래피를 조회할 수 있습니다.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+https://box-office-seven-beta.vercel.app/ <-- 프로젝트 링크!
 
-## Available Scripts
 
-In the project directory, you can run:
+### 🖥️ 프로젝트 소개
+-------------
 
-### `npm start`
+인프런 '한입 크기로 잘라 먹는 리액트(React.js)' 와 노마드코더의 'ReactJS로 영화 웹 서비스 만들기' 강의를 수강한 뒤, <br>
+개인 프로젝트로 만든 BOX OFFICE 웹 페이지 입니다. <br><br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+영화진흥위원회의 API를 사용해 박스오피스 정보를 받아오고, <br>
+TMDB API를 사용해 영화의 세부 정보 및 포스터, 배우 정보를 받아와 제작했습니다.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+BOX OFFICE 프로젝트는 SPA로 React Router Dom 라이브러리를 사용해 페이지 관리를 했습니다. <br>
+저장 기능(배우 찜 기능)은 Local Storage를 사용해 데이터를 save / load 하는 방식으로 구현 되었습니다. <br>
+carousel 기능을 사용하기 위해 TOP3 영화를 보여주는 NowHot 컴포넌트를 직접 구현하기도 했고, React slick 라이브러리를 사용해 웹페이지를 구현했습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### 🕰️개발 기간
+-------------
+#### 학습 기간 : 2024.02.01~ 2023.03.16 (45일)
+#### 개발 기간 : 2023.03.16~2023.04.13 (28일)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### ⚙️ 개발 환경
+-------------
+- IDE : <img src="https://img.shields.io/badge/VisualStudioCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
+- Stack : <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
