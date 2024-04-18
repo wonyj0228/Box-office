@@ -30,10 +30,24 @@ React slick 라이브러리를 사용해 웹페이지를 구현했습니다.<br>
 #### 개발 기간 : 2023.03.16~2023.04.13 (28일)
 
 
+### 🎪 프리뷰
+-------------
+<img src="img/preview.jpg" width="900" height="450">
+
+
 ### ⚙️ 개발 환경
 -------------
 - IDE : <img src="https://img.shields.io/badge/VisualStudioCode-007ACC?style=flat-square&logo=visualstudiocode&logoColor=white"/>
 - Stack : <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=react&logoColor=black"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black"/> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"/>
 - Library : <img src="https://img.shields.io/badge/React Router-CA4245?style=flat-square&logo=reactrouter&logoColor=black"/> , React Slick
 - API : 영화진흥위원회(Kofic), TMDB
+
+
+### 📌 주요 기능
+-------------
+| # | Page | Preview | Point |
+|:---:|:----------:|:---------:|-------|
+| 1 | Home         | <img src="img/preview.jpg" width="450" height="300">     |  ✔ 영화api로 데이터를 요청해 async&await 비동기 처리 <br> ✔ carousel 형태로 박스오피스 정보를 보여주는 홈화면 <br> <br> ✔  react router와 navigate를 사용해 페이지 간 이동 활성화   |
+| 2 | Detail       |  <img src="img/detail.jpg" width="450" height="300">     |  ✔ useParam으로 영화 ID를 받아와 영화 디테일 데이터를 api로 요청  <br> ✔ 캐스팅 목록에서 좋아하는 배우를 클릭하면 localstorage에 배우 id 저장   |
+| 3 | Like         |  <img src="img/like.jpg" width="450" height="300">       | ✔ localstorage에 저장된 배우list load <br> ✔ 배우의 필모그래피 데이터를 api로 요청 <br> ✔ 배우 클릭 시, 해당 배우의 필모그래피 img 불러와 carousel로 리스트 보여주는 페이지 |
 
