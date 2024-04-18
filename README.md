@@ -49,5 +49,5 @@ React slick 라이브러리를 사용해 웹페이지를 구현했습니다.<br>
 |:---:|:----------:|:---------:|-------|
 | 1 | Home         | <img src="img/preview.jpg" width="450" height="300">     |  ✔ 영화api로 데이터를 요청해 async&await 비동기 처리 <br> ✔ carousel 형태로 박스오피스 정보를 보여주는 홈화면 <br> <br> ✔  react router와 navigate를 사용해 페이지 간 이동 활성화   |
 | 2 | Detail       |  <img src="img/detail.jpg" width="450" height="300">     |  ✔ useParam으로 영화 ID를 받아와 영화 디테일 데이터를 api로 요청  <br> ✔ 캐스팅 목록에서 좋아하는 배우를 클릭하면 localstorage에 배우 id 저장   |
-| 3 | Like         |  <img src="img/like.jpg" width="450" height="300">       | ✔ localstorage에 저장된 배우list load <br> ✔ 배우의 필모그래피 데이터를 api로 요청 <br> ✔ 배우 클릭 시, 해당 배우의 필모그래피 img 불러와 carousel로 리스트 보여주는 페이지 |
+| 3 | Like         |  <img src="img/like.jpg" width="450" height="300">       | ✔ localstorage에 저장된 배우list load <br> ✔ 배우의 필모그래피 데이터를 api로 요청 <br> ✔ 배우 클릭 시, 해당 배우의 필모그래피 img 불러와 <br> carousel로 리스트 보여주는 페이지 |
 
